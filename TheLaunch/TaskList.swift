@@ -88,7 +88,7 @@ struct MyTasksView: View {
                     ForEach(DayPeriod.allCases, id: \.self) { period in
                         PeriodSection(
                             period: period,
-                            tasks: taskStore.tasks(
+                            tasks: taskStore.pendingTasks(
                                 on: displayedDate,
                                 period: period
                             ),

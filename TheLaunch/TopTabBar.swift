@@ -25,7 +25,7 @@ enum TopTab: String, CaseIterable, Hashable {
 
 struct RootView: View {
     
-    @State private var selection: TopTab = .myTasks
+    @State private var selection: TopTab = .today
     
     var body: some View {
         

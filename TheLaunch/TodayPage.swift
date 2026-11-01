@@ -176,7 +176,7 @@ struct TodayPage: View {
     // Only today's tasks that belong to the selected period.
     // Recomputed automatically whenever `tasks` or `selection` changes
     private var currentTasks: [TaskItem] {
-        store.tasks(on: Date(), period: selection)
+        store.pendingTasks(on: Date(), period: selection)
     }
     
     private func toggle(_ task: TaskItem) {
@@ -233,7 +233,6 @@ struct TodayPage: View {
                             if isExpanded {
                                 
                                 ForEach(currentTasks) { task in
-                                    
                                     TaskCard(
                                         title: task.name,
                                         subtitle: task.notes,
@@ -247,13 +246,16 @@ struct TodayPage: View {
                                         }
                                     )
                                     .transition(
-                                        .move(edge: .top)
-                                        .combined(with: .opacity)
+                                        .asymmetric(
+                                            insertion: .opacity,
+                                            removal: .move(edge: .leading)
+                                                .combined(with: .opacity)
+                                        )
                                     )
+                                    .animation(.easeInOut(duration: 0.3), value: currentTasks)
                                 }
                                 
                             } else {
-                                
                                 TaskStackCard(
                                     title: first.name,
                                     subtitle: first.notes,
@@ -264,66 +266,67 @@ struct TodayPage: View {
                                         toggle(first)
                                     }
                                 )
-                                .transition(.opacity)
+                                .transition(.opacity.combined(with: .move(edge: .leading)))
+                                .animation(.easeInOut(duration: 0.3), value: currentTasks)
                             }
                         }
-                        
-                        Button {
-                            withAnimation(.spring(duration: 0.4)) {
-                                isExpanded.toggle()
-                            }
-                        } label: {
                             
-                            Image(systemName: "chevron.down")
-                                .font(.system(size: 22, weight: .heavy))
-                                .foregroundStyle(Color.oliveDark)
-                                .rotationEffect(
-                                    .degrees(isExpanded ? 180 : 0)
-                                )
-                                .frame(maxWidth: .infinity, minHeight: 44)
-                                .contentShape(Rectangle())
+                            Button {
+                                withAnimation(.spring(duration: 0.4)) {
+                                    isExpanded.toggle()
+                                }
+                            } label: {
+                                
+                                Image(systemName: "chevron.down")
+                                    .font(.system(size: 22, weight: .heavy))
+                                    .foregroundStyle(Color.oliveDark)
+                                    .rotationEffect(
+                                        .degrees(isExpanded ? 180 : 0)
+                                    )
+                                    .frame(maxWidth: .infinity, minHeight: 44)
+                                    .contentShape(Rectangle())
+                            }
+                            .buttonStyle(.plain)
                         }
-                        .buttonStyle(.plain)
                     }
                 }
+                .padding(.horizontal, 24)
+                .padding(.top, 8)
             }
-            .padding(.horizontal, 24)
-            .padding(.top, 8)
-        }
-        
-        // MARK: - Navigation
-        
-        .navigationDestination(isPresented: $showBuddyPage) {
-            buddyPage()
-        }
-        
-        .navigationDestination(isPresented: $navigateToAdd) {
-            AddTaskView()
-        }
-        
-        .navigationDestination(isPresented: $navigateToEdit) {
             
-            if let task = taskToEdit {
+            // MARK: - Navigation
+            
+            .navigationDestination(isPresented: $showBuddyPage) {
+                buddyPage()
+            }
+            
+            .navigationDestination(isPresented: $navigateToAdd) {
+                AddTaskView()
+            }
+            
+            .navigationDestination(isPresented: $navigateToEdit) {
                 
-                EditTaskView(
-                    task: task,
-                    onSave: { updated in
-                        store.update(updated)
-                    },
-                    onDelete: {
-                        store.delete(task)
-                    }
-                )
+                if let task = taskToEdit {
+                    
+                    EditTaskView(
+                        task: task,
+                        onSave: { updated in
+                            store.update(updated)
+                        },
+                        onDelete: {
+                            store.delete(task)
+                        }
+                    )
+                }
+            }
+            .onChange(of: selection) {
+                isExpanded = false
             }
         }
-        .onChange(of: selection) {
-            isExpanded = false
-        }
+        
+        
     }
     
-
-}
-
-#Preview {
-    TodayPage().environment(TaskStore.preview)
-}
+    #Preview {
+        TodayPage().environment(TaskStore.preview)
+    }

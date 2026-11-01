@@ -147,6 +147,30 @@ final class TaskStore {
         return !day.isEmpty && day.allSatisfy { $0.isDone }
     }
     
+    // MARK: Active Tasks (not completed)
+
+    // All tasks that are not completed
+    var pendingTasks: [TaskItem] {
+        tasks.filter { !$0.isDone }
+    }
+
+    // Pending tasks for a specific day
+    func pendingTasks(on date: Date) -> [TaskItem] {
+        tasks.filter {
+            !$0.isDone &&
+            Calendar.current.isDate($0.date, inSameDayAs: date)
+        }
+    }
+
+    // Pending tasks for a specific day and period
+    func pendingTasks(on date: Date, period: DayPeriod) -> [TaskItem] {
+        tasks.filter {
+            !$0.isDone &&
+            $0.period == period &&
+            Calendar.current.isDate($0.date, inSameDayAs: date)
+        }
+    }
+    
     // MARK: Persistence
     
     private func saveTasks() { Self.write(tasks, to: tasksURL) }
