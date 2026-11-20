@@ -16,6 +16,11 @@
 			path = TheLaunch;
 			sourceTree = "<group>";
 		};
+		5B37956230B0A2E700F553A9 /* Screenshots */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Screenshots;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,6 +35,7 @@
 		000000000000000000000001 = {
 			isa = PBXGroup;
 			children = (
+				5B37956230B0A2E700F553A9 /* Screenshots */,
 				000000000000000000000010 /* TheLaunch */,
 				000000000000000000000020 /* Products */,
 			);
@@ -58,6 +64,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				000000000000000000000010 /* TheLaunch */,
+				5B37956230B0A2E700F553A9 /* Screenshots */,
 			);
 			name = TheLaunch;
 			productName = MyApp;
