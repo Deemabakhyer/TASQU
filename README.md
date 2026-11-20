@@ -1,10 +1,10 @@
-# TheLaunch 🚀
+# TASQU 🚀
 
-**TheLaunch** is an iOS application project developed using Apple's Xcode development environment.
+**TASQU** is an iOS application project developed using Apple's Xcode development environment.
 
 ## 📱 About The Project
 
-TheLaunch is an iOS development project focused on building an application experience for Apple devices.
+TASQU is an app that helps individuals with level 1 Autism Spectrum Disorder manage their daily tasks in a way that feels intuitive, and easy to use.
 
 This repository contains the Xcode project and its associated source files, providing the foundation for developing, running, and maintaining the application.
 
@@ -86,8 +86,19 @@ If you find a bug or have an idea for improvement, feel free to open an issue or
 ## 👩‍💻 Author
 
 **Deema Bakhyer**
-
 GitHub: [@Deemabakhyer](https://github.com/Deemabakhyer)
+
+**Hadeel Awaji**
+GitHub: [@HadeelAwaji](https://github.com/HadeelAwaji)
+
+**Haneen Alshyaji**
+GitHub: [@ha39-cell](https://github.com/ha39-cell)
+
+**Norah Alosaimi**
+GitHub: [@NorahALosaimi](https://github.com/NorahALosaimi)
+
+**Reema Alotaibi**
+GitHub: [@reema273100-dotcom](https://github.com/reema273100-dotcom)
 
 ## 📄 License
 
