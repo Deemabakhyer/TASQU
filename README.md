@@ -8,6 +8,20 @@ TASQU is an app that helps individuals with level 1 Autism Spectrum Disorder man
 
 This repository contains the Xcode project and its associated source files, providing the foundation for developing, running, and maintaining the application.
 
+## 📸 Screenshots
+
+<table>
+  <tr>
+    <td align="center"><img src="Screenshots/chooseBuddy.png" width="180" alt="Choose a Buddy"/><br/><sub><b>Choose a Buddy</b></sub></td>
+    <td align="center"><img src="Screenshots/today.png" width="180" alt="Today Tasks"/><br/><sub><b>Today</b></sub></td>
+    <td align="center"><img src="Screenshots/myTasks.png" width="180" alt="My Tasks"/><br/><sub><b>Today</b></sub></td>
+    <td align="center"><img src="Screenshots/addTask.png" width="180" alt="Add Task"/><br/><sub><b>Add Task</b></sub></td>
+    <td align="center"><img src="Screenshots/editTask.png" width="180" alt="Edit Task"/><br/><sub><b>Edit Task</b></sub>
+    <td align="center"><img src="Screenshots/myBuddy.png" width="180" alt="My Buddy"/><br/><sub><b>My Buddy</b></sub></td>
+</td>
+  </tr>
+</table>
+
 ## 🛠️ Built With
 
 - **Xcode** – Apple's integrated development environment.
